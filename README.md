@@ -1,50 +1,54 @@
-# Template for Hackathon
-이 레파지토리는 참여자들이 해커톤 결과물을 위한 레파지토리 생성시에 참고할 내용들을 담고 있습니다.
-1. 레파지토리 생성
-2. 레파지토리 구성
-3. README.md 가이드라인
-4. README.md 작성팁
-<br/>
-
-
-## 1. 레파지토리 생성
-- [https://classroom.github.com/a/r_quqgd5](https://classroom.github.com/a/r_quqgd5)
-- 위 Github Classroom 링크에 접속해 본인 조의 github 레파지토리를 생성하세요.
-<img src="https://github.com/user-attachments/assets/deccbc01-9c36-4757-be92-b8ff5c40ec26" width="600px" alt="Classroom에서 team 생성" />
-
-- 레파지토리 생성 시 팀 이름은 `{연도}-TEAM-{조번호}` 형식으로 생성하세요.
-- 예를 들어, 2025년도 3조의 팀명은 `2025-TEAM-03` 입니다.
-- 이 경우 `PNUSW-2025-TEAM-03`이라는 이름으로 레포지토리가 생성됩니다.
-<br/>
-
-
-## 2. 레파지토리 구성
-- 레파지토리 내에 `README.md` 파일 생성하고 아래의 가이드라인과 작성팁을 참고하여 파일을 작성하세요.
-- 레파지토리 내에 `docs` 폴더를 생성하고 폴더 내에는 과제 수행 하면서 작성한 각종 보고서, 발표자료를 올려둡니다.
-- 그 밖에 레파지토리의 폴더 구성은 과제 결과물에 따라 자유롭게 구성하되 가급적 코드의 목적이나 기능에 따라 폴더를 나누어 구성하세요.  
-<br/>
-
-
-## 3. README.md 가이드라인
-- README 파일 작성시에 아래의 5가지 항목의 내용은 필수적으로 포함해야 합니다.
-- 아래의 7가지 항목이외에 프로젝트의 이해를 돕기위한 내용을 추가해도 됩니다.
-- `SAMPLE_README.md`가 단순한 형태의 예제이니 참고하세요.
-```markdown
 ### 1. 프로젝트 소개
 #### 1.1. 개발배경 및 필요성
-> 프로젝트를 실행하게 된 배경 및 필요성을 작성하세요.
+
+부산대학교 인근에 위치한 금정열린배움터는 지역 기반 교육 봉사기관으로, 어르신 문해교육을 통해 교육 사각지대를 해소하고 사회 포용성을 높이고 있습니다. 그러나 운영 과정에서 다음과 같은 문제점을 발견하였습니다:
+
+- 출결, 일정 관리, 결강 처리 등이 모두 수작업으로 이루어져 업무 효율이 낮고 피로도가 큼
+- **재정 관리**가 수기 기반으로 되어 있어 오류 발생 가능성 존재
+- **학습 진도 관리가 미흡**하여 학습자 맞춤형 피드백 제공이 어려움
+- **공식 소통 창구의 부재**로 문의나 공지 전달이 비효율적임
+
+이를 해결하고자 봉사자와 실사용자의 요구를 반영하여 **운영 통합 앱** 개발이 필요함을 알게 되었습니다. 
 
 #### 1.2. 개발 목표 및 주요 내용
-> 프로젝트의 목표 및 주요 내용을 작성하세요.
+1. 업무 자동화 : 수작업 업무(출결, 일정, 결제 요청 등)를 디지털화하여 봉사자의 부담을 완화
+2. 재정 투명성 강화 : 결제 이력 및 입출금 기록을 DB 기반으로 관리하여 회계 신뢰도 향상
+3. 학습 모니터링 지원 : 개별 학습자의 이수 진도, 과제 수행 현황을 실시간으로 확인 및 피드백 제공
+4. 고령자 친화 UI 제공 (예정) : 향후 고령 학습자용 확장 대비 큰 글씨, 고대비 색상, 단순 레이아웃 기반 설계
+5. 구성원 간 커뮤니케이션 활성화 : 반별/부서별 게시판으로 공지, 문의사항 등을 쉽게 소통할 수 있도록 지원
 
 #### 1.3. 세부내용
-> 위 내용을 작성하세요.
+#### 사용자 유형 및 주요 기능
+
+| 사용자 유형       | 기능 요약                                                    |
+| ------------ | -------------------------------------------------------- |
+| **교사 (봉사자)** | 출석 인증, 시간표 열람, 반 출결 처리, 수업 교환 요청, 결제 요청, 학습자 모니터링, 반 게시판 |
+| **교육연구부**    | 전체 시간표 열람, 수업 교환 요청 승인, 게시판 운영                           |
+| **총무부**      | 결제 승인, 재정 입출금 등록, 게시판 운영                                 |
+| **홍보/생활안전부** | 부서별 게시판 운영                                               |
+
 
 #### 1.4. 기존 서비스 대비 차별성
-> 위 내용을 작성하세요.
+#### 유사 서비스 사례와 차별성
+> 기존 : 1365 자원봉사 포털, VMS, 청년포털(자원봉사 앱) 등
+
+| 항목    | 기존 자원봉사 앱      | 손모음 앱                       |
+| ----- | -------------- | --------------------------- |
+| 목적    | 봉사 실적 조회/신청 중심 | **현장 실시간 교육 지원 중심**         |
+| 사용자   | 봉사자 중심         | **봉사자 + 관리자 + 고령 학습자**      |
+| UI/UX | 일반 사용자         | **고령자 친화 UI(큰 글씨, 직관적 화면)** |
+| 학습 관리 | 미제공            | **실시간 학습 진도/과제 모니터링 제공**    |
+| 업무 지원 | X              | 출결/결제 요청/일정 변경 등 **전산화** 지원 |
+
 
 #### 1.5. 사회적가치 도입 계획
-> 위 내용을 작성하세요.
+> 본 프로젝트는 단순히 행정 효율을 높이기 위한 도구를 넘어, 지역 사회와 고령 학습자, 그리고 청년 봉사자 모두에게 긍정적인 사회적 가치를 제공하는 것을 주요 목표로 삼고 있습니다.
+
+손모음 프로젝트는 단순한 행정 자동화 앱을 넘어, 지역사회와 고령 학습자, 청년 봉사자 모두에게 의미 있는 사회적 가치를 제공합니다. 우선 부산대학교 학생들이 봉사 활동뿐 아니라 앱 개선, 유지보수 등 다양한 방식으로 지속적인 참여가 가능하도록 하여, 지역사회 기여와 실무 경험을 동시에 쌓을 수 있는 기반을 마련합니다. 또한 앱 구조를 모듈화하여 금정열린배움터 외에도 시민대학, 대안학교 등 **다양한 교육기관에서 활용**할 수 있도록 설계했으며, 추후 클라우드 기반 서비스로 확장해 전국 비영리 기관에 보급할 수 있습니다.
+
+아울러 학습자의 출결, 과제, 진도 데이터를 기반으로 고령 학습자 **맞춤형 교육 제공**이 가능하며, 이는 고령자의 학습 지속률과 동기 향상에 기여할 수 있습니다. 마지막으로 봉사자의 활동 이력을 자동 포트폴리오화하는 기능을 통해 성취감을 높이고 장기적인 봉사 참여를 유도하는 등, 앱을 통해 **지속 가능한 지역교육 생태계**를 구축하고자 합니다.
+
+결론적으로, 손모음 프로젝트는 단순한 앱 개발을 넘어 **고령층의 교육 접근성 향상, 청년의 지역사회 기여 활성화, 비영리 교육기관의 디지털 전환 지원**이라는 세 가지 측면에서 지속 가능하고 확장 가능한 사회적 가치를 실현하고자 합니다.
 
 
 ### 2. 상세설계
@@ -52,9 +56,25 @@
 > 시스템 구성도(infra, front, back등의 node 간의 관계)의 사진을 삽입하세요.
 
 #### 2.1. 사용 기술
-> 스택 별(backend, frontend, designer등) 사용한 기술 및 버전을 작성하세요.
-> 
-> ex) React.Js - React14, Node.js - v20.0.2
+- FrontEnd
+
+| 이름             | 버전    |
+|:----------------:|:-------:|
+| React Native(Expo)   | SDK 52  |
+| TypeScript  | 최신 |
+- BackEnd
+  
+| 이름                  | 버전    |
+|:---------------------:|:-------:|
+| NextJS               | ?   |
+| TypeORM     | ?  |
+| PostgreSQL      | ?  |
+- Designer
+  
+| 이름                  | 버전    |
+|:---------------------:|:-------:|
+| Figma               | ?   |
+
 
 ### 3. 개발결과
 #### 3.1. 전체시스템 흐름도
@@ -94,153 +114,23 @@
 > 프로젝트에 대한 소개와 시연 영상을 넣으세요.
 > 프로젝트 소개 동영상을 교육원 메일(swedu@pusan.ac.kr)로 제출 이후 센터에서 부여받은 youtube URL주소를 넣으세요.
 
-### 6. 팀 소개
-> 팀원 소개 & 구성원 별 역할 분담 & 간단한 연락처를 작성하세요.
+### 6. 팀 소개 (임시 이미지)
+| 이병길 | 김소영 | 김태란 | 황혜정 | 최양진 | 김도형 |
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|<img width="100px" alt="이병길" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="김태란" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/fe4e8910-4565-4f3f-9bd1-f135e74cb39d" /> | <img width="100px" alt="이병길" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="김태란" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/fe4e8910-4565-4f3f-9bd1-f135e74cb39d" /> | <img width="100px" alt="이병길" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="김태란" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/fe4e8910-4565-4f3f-9bd1-f135e74cb39d" /> |
+| qudrlf72@naver.com | so09021@pusan.ac.kr | kimtaeran4767@gmail.com | ssssandy@pusan.ac.kr | chldidwls@pusan.ac.kr | gnoeyh19@gmail.com |
+| 프론트 개발 <br/> 팀장 및 총괄 | 아이디어 기획 <br/> 기획자 | 프론트엔드 개발 <br/> 백엔드 테스트 | UI/UX 디자인 <br/> 디자이너 | 디자이너 <br/> UI/UX 디자인 | 백엔드 개발 <br/> 백엔드 |
 
 ### 7. 해커톤 참여 후기
-> 팀원 별 해커톤 참여 후기를 작성하세요.
-```
-<br/>
-
-
-## 4. README.md 작성 팁
-- 마크다운 언어를 이용해 README.md 파일을 작성할 때 참고할 수 있는 마크다운 언어 문법을 공유합니다.
-- 다양한 예제와 보다 자세한 문법은 [이 문서](https://www.markdownguide.org/basic-syntax/)를 참고하세요.
-
-### 4.1. 헤더 Header
-```
-# This is a Header 1
-## This is a Header 2
-### This is a Header 3
-#### This is a Header 4
-##### This is a Header 5
-###### This is a Header 6
-####### This is a Header 7 은 지원되지 않습니다.
-```
-
-# This is a Header 1
-## This is a Header 2
-### This is a Header 3
-#### This is a Header 4
-##### This is a Header 5
-###### This is a Header 6
-####### This is a Header 7 은 지원되지 않습니다.
-<br />
-
-### 4.2. 인용문 BlockQuote
-```
-> This is a first blockqute.
->	> This is a second blockqute.
->	>	> This is a third blockqute.
-```
-> This is a first blockqute.
->	> This is a second blockqute.
->	>	> This is a third blockqute.
-<br />
-
-### 4.3. 목록 List
-* **Ordered List**
-```
-1. first
-2. second
-3. third  
-```
-1. first
-2. second
-3. third
-<br />
-
-* **Unordered List**
-```
-* 하나
-  * 둘
-
-+ 하나
-  + 둘
-
-- 하나
-  - 둘
-```
-* 하나
-  * 둘
-
-+ 하나
-  + 둘
-
-- 하나
-  - 둘
-<br />
-
-### 4.4. 코드 CodeBlock
-* 코드 블럭 이용 '``'
-```
-여러줄 주석 "```" 이용
-"```
-#include <stdio.h>
-int main(void){
-  printf("Hello world!");
-  return 0;
-}
-```"
-
-단어 주석 "`" 이용
-"`Hello world`"
-
-* 큰 따움표(") 없이 사용하세요.
-``` 
-<br />
-
-### 4.5. 링크 Link
-```
-[Title](link)
-[부산대 소프트웨어융합교육원](https://swedu.pusan.ac.kr/swedu/index.do)
-
-<link>
-<https://swedu.pusan.ac.kr>
-``` 
-[부산대 소프트웨어융합교육원](https://swedu.pusan.ac.kr)
-
-<https://swedu.pusan.ac.kr>  
-<br />
-
-### 4.6. 강조 Highlighting
-```
-*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
-~~cancelline~~
-```
-*single asterisks* <br />
-_single underscores_ <br />
-**double asterisks** <br />
-__double underscores__ <br />
-~~cancelline~~  <br />
-<br />
-
-### 4.7. 이미지 Image
-```
-<img src="/path/to/img.jpg" width="600px" title="Title" alt="Alt text"></img>
-![Alt text](/path/to/img.jpg "Optional title")
-```
-<img src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/be7beb64-490f-4480-b121-f25cde7f2a8d" width="600px" title="부산대학교 소프트웨어융합교육원" alt="부산대학교 소프트웨어융합교육원"></img>
-<br/>
-![부산대학교 소프트웨어융합교육원](https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/884154bb-28f6-4498-9f64-a8a878972951, "부산대학교 소프트웨어융합교육원")
-<br/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- 이병길
+ > 안녕하세요
+- 김소영
+ > 안녕하세요
+- 김태란
+ > 안녕하세요
+- 황혜정
+ > 안녕하세요
+- 최양진
+ > 안녕하세요
+- 김도형
+ > 안녕하세요

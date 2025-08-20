@@ -108,7 +108,7 @@
 
 #### 3.4. 디렉토리 구조
 ```text
-├─.idea
+...
 ├─backend
 │    └─src
 │       ├─controller
@@ -200,7 +200,8 @@
 │     └─types # 각 페이지별 타입 모음
 │          └─ ...
 ├─pakage-lock.json
-└─pakage.json
+├─pakage.json
+...
 ```
 
 ### 4. 설치 및 사용 방법

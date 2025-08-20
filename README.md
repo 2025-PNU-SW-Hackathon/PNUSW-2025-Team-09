@@ -60,20 +60,23 @@
 
 | 이름             | 버전    |
 |:----------------:|:-------:|
-| React Native(Expo)   | SDK 52  |
-| TypeScript  | 최신 |
+| React | 18.3.1 |
+| React Native | 0.76.7 |
+| Expo   | SDK 52  |
+| TypeScript  | 5.3.3 |
 - BackEnd
   
 | 이름                  | 버전    |
 |:---------------------:|:-------:|
-| NextJS               | ?   |
-| TypeORM     | ?  |
-| PostgreSQL      | ?  |
+| NestJS               | 11.0.9 |
+| TypeORM     | 0.3.20 |
+| TypeScript  | 4.9.5 |
+| PostgreSQL      | 17.4 |
 - Designer
   
 | 이름                  | 버전    |
 |:---------------------:|:-------:|
-| Figma               | ?   |
+| Figma               | latest |
 
 
 ### 3. 개발결과

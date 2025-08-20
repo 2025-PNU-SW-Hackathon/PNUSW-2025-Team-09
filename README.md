@@ -107,7 +107,102 @@
 [https://phase-bird-e06.notion.site/2530a7dbe96d8065a716d9c815c353e5?v=2530a7dbe96d8006acc8000c325ac061&source=copy_link](https://phase-bird-e06.notion.site/2530a7dbe96d8065a716d9c815c353e5?v=2530a7dbe96d8006acc8000c325ac061&source=copy_link)
 
 #### 3.4. 디렉토리 구조
-> 위 레포지토리의 디렉토리 구조를 설명하세요.
+```text
+├─.idea
+├─backend
+│    └─src
+│       ├─controller
+│       │     ├─auth
+│       │     ├─notive_board
+│       │     ... # 도메인별 컨트롤러
+│       ├─dto
+│       │  ├─auth
+│       │  ├─notive_board
+│       │  ... # 도메인별 dto
+│       ├─entity
+│       │   ├─auth
+│       │   ├─notive_board
+│       │   ... # 도메인별 엔티티
+│       ├─module
+│       │    ├─auth
+│       │    ├─notive_board
+│       │    ... # 도메인별 모듈 
+│       ├─service
+│       │    ├─auth
+│       │    ├─notive_board
+│       │    ... # 도메인별 서비스 로직
+│       └─shared 
+│            ├─app.controller.spec.ts
+│            ├─app.controller.ts
+│            ├─app.module.ts
+│            ├─app.service.ts
+│            └─main.ts
+│  
+├─frontend
+│     ├─app # 경로별 페이지
+│     │   ├─calendar
+│     │   │     └─index.tsx
+│     │   ├─learning_monitoring
+│     │   │          └─index.tsx
+│     │   ├─main
+│     │   │   ├─class_management
+│     │   │   │        └─index.tsx
+│     │   │   ├─class_request
+│     │   │   │        └─index.tsx
+│     │   │   ├─payment_request
+│     │   │   │        └─index.tsx
+│     │   │   └─index.tsx
+│     │   ├─notice_board
+│     │   │      ├─create
+│     │   │      │    ├─index.tsx
+│     │   │      ├─index.tsx
+│     │   │      └─[id].tsx 
+│     │   ├─setting
+│     │   │   └─index.tsx
+│     │   ├─sign_up
+│     │   │   └─index.tsx
+│     │   └─index.tsx 
+│     ├─app_assets # 각 페이지별로 쓰이는 svg 파일 모음
+│     │      └─ ...
+│     ├─app_component # 각 페이지별 컴포넌트 모음
+│     │   ├─calendar_screen
+│     │   │       └─ ...
+│     │   ├─learning_monitoring_screen
+│     │   │            └─ ...
+│     │   ├─main_screen
+│     │   │      ├─class_management_screen
+│     │   │      │          └─ ...
+│     │   │      ├─class_request_screen
+│     │   │      │          └─ ...
+│     │   │      ├─payment_request_screen
+│     │   │      │          └─ ...
+│     │   │      ├─payment_screen
+│     │   │      │          └─ ...
+│     │   │      └ ...
+│     │   ├─notice_board_screen
+│     │   │      ├─create
+│     │   │      │    └─ ...
+│     │   │      ├─filter_button
+│     │   │      │    └─ ...
+│     │   │      ├─filter_card
+│     │   │      │    └─ ...
+│     │   │      ├─notice_board_detail_screen
+│     │   │      │             └─ ...
+│     │   │      └ ...
+│     │   ├─setting_screen
+│     │   │   └─ ...
+│     │   └─shared
+│     │        └─ ...
+│     ├─assets
+│     │  ├─fonts
+│     │  └─images
+│     ├─node_modules
+│     └─types # 각 페이지별 타입 모음
+│          └─ ...
+├─pakage-lock.json
+└─pakage.json
+```
+```
 
 ### 4. 설치 및 사용 방법
 > 제품을 설치하기 위헤 필요한 소프트웨어 및 설치 방법을 작성하세요.

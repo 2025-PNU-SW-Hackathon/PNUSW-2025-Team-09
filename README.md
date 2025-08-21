@@ -86,21 +86,159 @@
 
 
 #### 3.2. 기능설명
-> 각 페이지 마다 사용자의 입력의 종류와 입력에 따른 결과 설명 및 시연 영상.
-> 
-> ex. 로그인 페이지:
-> 
-> - 이메일 주소와 비밀번호를 입력하면 입력창에서 유효성 검사가 진행됩니다.
-> 
-> - 요효성 검사를 통과하지 못한 경우, 각 경고 문구가 입력창 하단에 표시됩니다.
->   
-> - 유효성 검사를 통과한 경우, 로그인 버튼이 활성화 됩니다.
->   
-> - 로그인 버튼을 클릭 시, 입력한 이메일 주소와 비밀번호에 대한 계정이 있는지 확인합니다.
->   
-> - 계정이 없는 경우, 경고문구가 나타납니다.
->
-> (영상)
+
+1. 메인 페이지: 수업의 전반적인 일정을 체크하고 교환/결강/결제 등 수업을 관리할 수 있습니다.
+<table>
+  <tr>
+    <td>
+      <img width="300" alt="메인페이지" src="https://github.com/user-attachments/assets/770f846b-0a4b-487c-a8d7-f9cf587cd4fa"/>
+    </td>
+    <td>
+      <img alt="이번주일정_나의일정" src="https://github.com/user-attachments/assets/ba466caf-ae7b-465f-8434-4aa3a4ff3682" width="700"/><br/>
+      ㄴ 반 별로 그에 맞는 아이콘과 수업 시간이 나타나고 요일별로 일정을 확인할 수 있습니다.<br/><br/>
+      <table>
+        <tr>
+          <th>번호</th><th>기능</th><th>설명</th>
+        </tr>
+        <tr>
+          <td>1</td><td>오늘의 수업 확인</td><td>로그인된 선생님의 오늘 수업을 확인할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>2</td><td>수업 출석체크</td><td>슬라이드 형식으로 간편하게 출석을 체크할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>3</td><td>이번 주 일정 체크</td><td>나의/전체 일정 옵션을 통해 수업 일정 현황을 확인할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>4</td><td>신청서 작성</td><td>결제/교환/결강 요청서를 작성할 수 있습니다</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+---
+
+2. 교환/결강 페이지: 교사간의 수업 교환 및 결강 요청서를 열람할 수 있습니다.
+<table>
+  <tr>
+    <td>
+      <img width="600" alt="교환요청서1" src="https://github.com/user-attachments/assets/f73e3e8c-a264-4695-9c9d-731b3ea4e6a0"/>
+      <br/><br/>
+      <table>
+        <tr>
+          <th>번호</th><th>기능</th><th>설명</th>
+        </tr>
+        <tr>
+          <td>1</td><td>교환/결강 선택</td><td>교환 또는 결강 요청서의 목록을 선택해 열람할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>2</td><td>교환/결강 요청서 작성</td><td>교환/결강 요청서를 작성할 수 있는 페이지로 이동합니다</td>
+        </tr>
+        <tr>
+          <td>3</td><td>교환/결강 요청서 카드</td><td>교환을 원하는 선생님의 수업 날짜/이름/교환 이유를 확인할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>4</td><td>요청서 필터</td><td>관리자가 해당 교환/결강을 수락/거절했는지(혹은 대기 중인지) 필터링 할 수 있습니다</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+2-1. 교환/결강 작성 및 관리자 페이지: 교환/결강 요청서를 작성하고 (관리자) 요청서를 수락/거절할 수 있습니다. 
+<table>
+  <tr>
+    <td>
+      <img width="700" alt="교환요청서2" src="https://github.com/user-attachments/assets/204021e9-ea20-4b4a-a010-14646ace725e"/>
+      <br/><br/>
+      <table>
+        <tr>
+          <th>번호</th><th>기능</th><th>설명</th>
+        </tr>
+        <tr>
+          <td>2</td><td>교환/결강 요청서 작성</td><td>교환 또는 결강 요청서를 선택해 작성합니다.</td>
+        </tr>
+        <tr>
+          <td>2</td><td>교환/결강 요청서 작성</td><td>교환 요청서를 작성합니다</td>
+        </tr>
+        <tr>
+          <td>2</td><td>교환/결강 요청서 작성</td><td>결강 요청서를 작성합니다</td>
+        </tr>
+        <tr>
+          <td>5</td><td>요청서 수락/거절</td><td>관리자는 교사의 교환/결강을 수락/거절할 수 있습니다</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+---
+
+3. 결제 요청 페이지: 교환/결강 요청서를 작성하고 (관리자) 요청서를 수락/거절할 수 있습니다. 
+<table>
+  <tr>
+    <td>
+      <img width="700" alt="결제요청서" src="https://github.com/user-attachments/assets/1bd04387-98c9-48fe-b7bb-1072042ffde4"/>
+      <br/><br/>
+      <table>
+        <tr>
+          <th>번호</th><th>기능</th><th>설명</th>
+        </tr>
+        <tr>
+          <td>1</td><td>결제 요청서 작성</td><td>결제 요청서를 작성합니다.</td>
+        </tr>
+        <tr>
+          <td>2</td><td>결제 요청서 카드</td><td>본인이 작성한 결제 요청서를 열람할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>3</td><td>결제 요청 필터</td><td>결제 요청서의 수락/거절/대기 여부를 필터링하여 확인할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>4</td><td>요청서 수락/거절</td><td>관리자는 교사의 결제 요청을 수락/거절할 수 있습니다</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+---
+
+4. 게시판: 손모음 앱의 모든 유저들은 자유롭게 글을 작성할 수 있습니다.
+<table>
+  <tr>
+    <td>
+      <img height="350" alt="게시판1" src="https://github.com/user-attachments/assets/5370364f-ec05-4572-b28a-7463bca6b517"/>
+      <img height="350" alt="게시판2" src="https://github.com/user-attachments/assets/69ca7476-99e3-43b3-8042-8799a8fc0bf3"/>
+      <br/><br/>
+      <table>
+        <tr>
+          <th>번호</th><th>기능</th><th>설명</th>
+        </tr>
+        <tr>
+          <td>1</td><td>반 별 게시판 필터</td><td>반 별 게시판에서는 특정 반과 게시글의 종류를 선택할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>2</td><td>부 별 게시판 필터</td><td>부 별 게시판에서는 특정 부서와 게시글의 종류를 선택할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>3</td><td>게시글 확인</td><td>작성되어 있는 게시글의 제목/내용/날짜/조회수/댓글을 스크롤로 확인할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>4</td><td>게시글 작성</td><td>원하는 반/부서 게시판에서 게시글을 작성할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>5</td><td>파일/이미지 업로드</td><td>파일과 이미지를 글과 함께 업로드할 수 있습니다</td>
+        </tr>
+        <tr>
+          <td>6</td><td>댓글 작성</td></td><td>게시글에 댓글 및 답글을 작성하고 확인할 수 있습니다</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
 
 #### 3.3. 기능명세서
 > 노션 링크
@@ -111,7 +249,8 @@
 ```text
 ...
 ├─backend
-│    └─src
+│    └─src![요청서2](https://github.com/user-attachments/assets/3e14b1b8-4ad8-4bbb-a1ed-da8959bd8e8d)
+
 │       ├─controller
 │       │     ├─auth
 │       │     ├─notive_board

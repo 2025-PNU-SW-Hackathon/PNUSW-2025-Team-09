@@ -94,7 +94,7 @@
       <img width="500" alt="메인페이지" src="https://github.com/user-attachments/assets/770f846b-0a4b-487c-a8d7-f9cf587cd4fa"/>
     </td>
     <td>
-      <img alt="이번주일정_나의일정" src="https://github.com/user-attachments/assets/ba466caf-ae7b-465f-8434-4aa3a4ff3682" width="700"/><br/>
+      <img width="900" alt="이번주일정_나의일정" src="https://github.com/user-attachments/assets/ba466caf-ae7b-465f-8434-4aa3a4ff3682"/><br/>
       ㄴ 반 별로 그에 맞는 아이콘과 수업 시간이 나타나고 요일별로 일정을 확인할 수 있습니다.<br/><br/>
       <table>
         <tr>

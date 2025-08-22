@@ -53,8 +53,7 @@
 
 ### 2. 상세설계
 #### 2.1. 시스템 구성도
-<img width="700" height="700" alt="Group" src="https://github.com/user-attachments/assets/e1a6bdd4-747c-4bc8-bf84-febdec62436a" />
-
+<img width="700" height="700" alt="Group" src="https://github.com/user-attachments/assets/9a6d1b7b-e55d-467f-a793-944de5b1436b" />
 
 
 #### 2.1. 사용 기술

@@ -239,6 +239,51 @@
   </tr>
 </table>
 
+---
+
+5. 출석부 및 수업일지: 야학 선생님들은 학생들의 출석과 수업 일지를 관리할 수 있습니다. 
+<table>
+  <tr>
+    <td align="center">
+      <img height="400" alt="출석부" src="https://github.com/user-attachments/assets/6a514667-d56f-4a99-8bb9-d4f2c86b3e1b"/>
+    </td>
+    <td align="center">
+      <img height="400" alt="수업일지" src="https://github.com/user-attachments/assets/02f176b7-054e-4752-be24-574148def6df"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <th>번호</th><th>기능</th><th>설명</th>
+        </tr>
+        <tr>
+          <td>1</td><td>출석 체크</td><td>학생들의 출석 여부를 기록하고 내역을 확인할 수 있습니다.</td>
+        </tr>
+        <tr>
+          <td>2</td><td>학생 명단 추가</td><td>해당 수업의 학생 명단을 추가할 수 있습니다.</td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <table>
+        <tr>
+          <th>번호</th><th>기능</th><th>설명</th>
+        </tr>
+        <tr>
+          <td>1</td><td>오늘의 수업 일지</td><td>오늘 수업 진행 내용을 기록할 수 있고 작성한 내용을 수정할 수 있습니다.</td>
+        </tr>
+        <tr>
+          <td>2</td><td>이전 수업일지</td><td>이전의 수업들에 대한 일지를 열람할 수 있습니다.</td>
+        </tr>
+        <tr>
+          <td>3</td><td>수업 일지 작성</td><td>날짜, 이름, 수업 내용을 바탕으로 수업 일지를 날짜별로 기록할 수 있습니다.</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
 
 #### 3.3. 기능명세서
 > 노션 링크

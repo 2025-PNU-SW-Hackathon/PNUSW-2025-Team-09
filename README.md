@@ -294,8 +294,7 @@
 ```text
 ...
 ├─backend
-│    └─src![요청서2](https://github.com/user-attachments/assets/3e14b1b8-4ad8-4bbb-a1ed-da8959bd8e8d)
-
+│    └─src
 │       ├─controller
 │       │     ├─auth
 │       │     ├─notive_board

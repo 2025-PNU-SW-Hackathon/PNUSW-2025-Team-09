@@ -389,9 +389,13 @@
 ```
 
 ### 4. 설치 및 사용 방법
-> 제품을 설치하기 위헤 필요한 소프트웨어 및 설치 방법을 작성하세요.
->
-> 제품을 설치하고 난 후, 실행 할 수 있는 방법을 작성하세요.
+```bash
+git clone <레포지토리 주소>
+cd frontend
+npm install
+npx expo login #EAS 빌드를 사용하기 위한 Expo 계정 필요
+eas build --profile preview --platform android
+```
 
 ### 5. 소개 및 시연 영상
 > 프로젝트에 대한 소개와 시연 영상을 넣으세요.

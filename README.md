@@ -390,7 +390,7 @@
 
 ### 4. 설치 및 사용 방법
 ```bash
-git clone <레포지토리 주소>
+git clone https://github.com/2025-PNU-SW-Hackathon/PNUSW-2025-Team-09.git
 cd frontend
 npm install
 npx expo login #EAS 빌드를 사용하기 위한 Expo 계정 필요

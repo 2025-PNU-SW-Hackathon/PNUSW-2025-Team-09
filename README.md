@@ -396,6 +396,7 @@ npm install
 npx expo login #EAS 빌드를 사용하기 위한 Expo 계정 필요
 eas build --profile preview --platform android
 ```
+빌드 후 제공되는 QR코드 혹은 링크를 통해 APK 파일 다운로드
 
 ### 5. 소개 및 시연 영상
 > 프로젝트에 대한 소개와 시연 영상을 넣으세요.

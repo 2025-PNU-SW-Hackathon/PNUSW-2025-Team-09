@@ -402,7 +402,7 @@
 |:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
 |<img width="100px" alt="이병길" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="김태란" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/fe4e8910-4565-4f3f-9bd1-f135e74cb39d" /> | <img width="100px" alt="이병길" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="김태란" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/fe4e8910-4565-4f3f-9bd1-f135e74cb39d" /> | <img width="100px" alt="이병길" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="김태란" src="https://github.com/pnuswedu/SW-Hackathon-2024/assets/34933690/fe4e8910-4565-4f3f-9bd1-f135e74cb39d" /> |
 | qudrlf72@naver.com | so09021@pusan.ac.kr | kimtaeran4767@gmail.com | ssssandy@pusan.ac.kr | chldidwls@pusan.ac.kr | gnoeyh19@gmail.com |
-| 프론트 개발 <br/> 팀장 및 총괄 | 아이디어 기획 <br/> 기획자 | 프론트엔드 개발 <br/> 백엔드 테스트 | UI/UX 디자인 <br/> 디자이너 | 디자이너 <br/> UI/UX 디자인 | 백엔드 개발 <br/> 백엔드 |
+| 팀장 <br/> 프론트/백 개발 | 기획자 <br/> 아이디어 기획 | 프론트엔드 개발자 <br/> 프론트 개발/백 테스트 | 디자이너 <br/> UI/UX 디자인 | 디자이너 <br/> UI/UX 디자인 | 백엔드 개발자 <br/> 백엔드 개발 |
 
 ### 7. 해커톤 참여 후기
 - 이병길

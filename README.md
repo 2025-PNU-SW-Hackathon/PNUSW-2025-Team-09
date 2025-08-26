@@ -287,7 +287,6 @@
 
 #### 3.3. 기능명세서
 > 노션 링크
-
 [https://phase-bird-e06.notion.site/2530a7dbe96d8065a716d9c815c353e5?v=2530a7dbe96d8006acc8000c325ac061&source=copy_link](https://phase-bird-e06.notion.site/2530a7dbe96d8065a716d9c815c353e5?v=2530a7dbe96d8006acc8000c325ac061&source=copy_link)
 
 #### 3.4. 디렉토리 구조
@@ -399,8 +398,8 @@ eas build --profile preview --platform android
 빌드 후 제공되는 QR코드 혹은 링크를 통해 APK 파일 다운로드
 
 ### 5. 소개 및 시연 영상
-> 프로젝트에 대한 소개와 시연 영상을 넣으세요.
-> 프로젝트 소개 동영상을 교육원 메일(swedu@pusan.ac.kr)로 제출 이후 센터에서 부여받은 youtube URL주소를 넣으세요.
+> 유튜브 링크
+[https://youtu.be/1xYucHfOKXk](https://youtu.be/1xYucHfOKXk)
 
 ### 6. 팀 소개 (임시 이미지)
 | 이병길 | 김소영 | 김태란 | 황혜정 | 최양진 | 김도형 |

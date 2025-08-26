@@ -287,6 +287,7 @@
 
 #### 3.3. 기능명세서
 > 노션 링크
+
 [https://phase-bird-e06.notion.site/2530a7dbe96d8065a716d9c815c353e5?v=2530a7dbe96d8006acc8000c325ac061&source=copy_link](https://phase-bird-e06.notion.site/2530a7dbe96d8065a716d9c815c353e5?v=2530a7dbe96d8006acc8000c325ac061&source=copy_link)
 
 #### 3.4. 디렉토리 구조
@@ -399,6 +400,7 @@ eas build --profile preview --platform android
 
 ### 5. 소개 및 시연 영상
 > 유튜브 링크
+
 [https://youtu.be/1xYucHfOKXk](https://youtu.be/1xYucHfOKXk)
 
 ### 6. 팀 소개 (임시 이미지)

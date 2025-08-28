@@ -1,5 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList, TouchableOpacity, Text, View, StyleSheet, Dimensions } from 'react-native';
+import {
+  FlatList,
+  TouchableOpacity,
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  ActivityIndicator,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import publicApi from '@/api/clients/publicApi';
@@ -134,6 +142,11 @@ export const NoticeList = ({ selectedTab, filter1, filter2 }: Props) => {
       }}
       onEndReachedThreshold={0.1}
       removeClippedSubviews={false}
+      ListFooterComponent={
+        loading ? (
+          <ActivityIndicator size="large" color="#87C25C" style={{ marginVertical: 16 }} />
+        ) : null
+      }
     />
   );
 };

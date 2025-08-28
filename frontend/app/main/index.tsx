@@ -5,7 +5,6 @@ import {
   StatusBar,
   StyleSheet,
   Dimensions,
-  Animated,
   TouchableOpacity,
 } from 'react-native';
 import { Header } from '@/app_components/main_screen/Header';
@@ -14,8 +13,8 @@ import { WeeklySchedule } from '@/app_components/main_screen/WeeklySchedule';
 import { PaymentRequestButton } from '@/app_components/main_screen/PaymentRequestButton';
 import { ClassRequestButton } from '@/app_components/main_screen/ClassRequestButton';
 import { useState } from 'react';
-import CheckHoleOverlay from '@/app_assets/main/check-hole-overlay.svg';
 import { useRouter } from 'expo-router';
+import { usePopup } from '@/hooks/usePopup';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -25,32 +24,11 @@ export default function MainScreen() {
   const day = today.getDay();
   const [selectedDay, setSelectedDay] = useState(day);
   const [onAttendance, setOnAttendance] = useState(false);
-  const [popupVisible, setPopupVisible] = useState(false);
-  const opacity = useState(new Animated.Value(1))[0];
-
-  const showPopup = () => {
-    setPopupVisible(true);
-    setTimeout(() => {
-      Animated.timing(opacity, {
-        toValue: 0,
-        duration: 1300,
-        useNativeDriver: true,
-      }).start(() => {
-        setPopupVisible(false);
-      });
-    }, 1000);
-    return;
-  };
+  const { showPopup } = usePopup();
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#F1F1F1" />
-      {popupVisible && (
-        <Animated.View style={[styles.popup, { opacity: opacity }]}>
-          <CheckHoleOverlay width={screenWidth * 0.3} height={screenWidth * 0.3} />
-          <Text style={styles.popupText}>출석 완료!</Text>
-        </Animated.View>
-      )}
       <Header />
       <AttendanceButton
         onAttendance={onAttendance}
@@ -86,21 +64,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F1F1F1',
-  },
-  popup: {
-    position: 'absolute',
-    width: screenWidth,
-    height: screenHeight,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    zIndex: 1,
-  },
-  popupText: {
-    marginTop: screenHeight * 0.03,
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#FFFFFF',
   },
   panelHeader: {
     justifyContent: 'center',

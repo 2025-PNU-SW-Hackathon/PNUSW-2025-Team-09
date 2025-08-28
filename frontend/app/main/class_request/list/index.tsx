@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   View,
   Text,
@@ -16,7 +16,7 @@ import {
 } from '@/app_components/main_screen/class_request_screen/list_screen/FilterButton';
 import { FilterSheet } from '@/app_components/main_screen/class_request_screen/list_screen/FilterSheet';
 import GoBack from '@/app_assets/main/goback.svg';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { getExchangeResponse } from '@/api/main/exchangeApi';
 import { getCancelResponse } from '@/api/main/cancelApi';
 import { getExchangeMock } from '@/api/main/exchangeMock';
@@ -60,6 +60,8 @@ type LocalAbsenceItem = {
   createdAt: string;
 };
 
+const SVG_SIZE = screenWidth * 0.045;
+
 export default function ClassRequestScreen() {
   const [selection, setSelection] = useState<'교환' | '결강'>('교환');
   const [filter, setFilter] = useState<FilterType>('대기');
@@ -67,70 +69,75 @@ export default function ClassRequestScreen() {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState<ListItem[]>([]);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
-  useEffect(() => {
-    const load = async () => {
-      setLoading(true);
-      try {
-        if (selection === '교환') {
-          const exchangeData = await AsyncStorage.getItem('exchangeRequests');
-          const localExchangeItems: LocalExchangeItem[] = exchangeData
-            ? JSON.parse(exchangeData)
-            : [];
+  useFocusEffect(
+    useCallback(() => {
+      const load = async () => {
+        setLoading(true);
+        try {
+          if (selection === '교환') {
+            const exchangeData = await AsyncStorage.getItem('exchangeRequests');
+            const localExchangeItems: LocalExchangeItem[] = exchangeData
+              ? JSON.parse(exchangeData)
+              : [];
 
-          const map = await getExchangeMock();
-          const mockList: ListItem[] = Object.entries(map).flatMap(([id, val]) => {
-            const arr = Array.isArray(val) ? val : [val];
-            return arr.map((v) => ({ ...v, eventId: Number(id), kind: '교환' as const }));
-          });
+            const map = await getExchangeMock();
+            const mockList: ListItem[] = Object.entries(map).flatMap(([id, val]) => {
+              const arr = Array.isArray(val) ? val : [val];
+              return arr.map((v) => ({ ...v, eventId: Number(id), kind: '교환' as const }));
+            });
 
-          const localList: ListItem[] = localExchangeItems.map((item) => ({
-            eventId: Number(item.id),
-            kind: '교환' as const,
-            dateFrom: item.dateFrom,
-            timeFrom: item.timeFrom,
-            classFrom: item.classFrom,
-            teacherFrom: item.teacherFrom,
-            dateTo: item.dateTo,
-            timeTo: item.timeTo,
-            classTo: item.classTo,
-            teacherTo: item.teacherTo,
-            description: item.description,
-            status: item.status as any,
-          }));
+            const localList: ListItem[] = localExchangeItems.map((item) => ({
+              eventId: Number(item.id),
+              kind: '교환' as const,
+              dateFrom: item.dateFrom,
+              timeFrom: item.timeFrom,
+              classFrom: item.classFrom,
+              teacherFrom: item.teacherFrom,
+              dateTo: item.dateTo,
+              timeTo: item.timeTo,
+              classTo: item.classTo,
+              teacherTo: item.teacherTo,
+              description: item.description,
+              status: item.status as any,
+            }));
 
-          setItems([...mockList, ...localList]);
-        } else {
-          const absenceData = await AsyncStorage.getItem('absenceRequests');
-          const localAbsenceItems: LocalAbsenceItem[] = absenceData ? JSON.parse(absenceData) : [];
+            setItems([...mockList, ...localList]);
+          } else {
+            const absenceData = await AsyncStorage.getItem('absenceRequests');
+            const localAbsenceItems: LocalAbsenceItem[] = absenceData
+              ? JSON.parse(absenceData)
+              : [];
 
-          const map = await getCancelMock();
-          const mockList: ListItem[] = Object.entries(map).flatMap(([id, arr]) =>
-            arr.map((v) => ({ ...v, eventId: Number(id), kind: '결강' as const })),
-          );
+            const map = await getCancelMock();
+            const mockList: ListItem[] = Object.entries(map).flatMap(([id, arr]) =>
+              arr.map((v) => ({ ...v, eventId: Number(id), kind: '결강' as const })),
+            );
 
-          const localList: ListItem[] = localAbsenceItems.map((item) => ({
-            eventId: Number(item.id),
-            kind: '결강' as const,
-            date: item.date,
-            time: item.time,
-            class: item.class,
-            teacher: item.teacher,
-            description: item.description,
-            status: item.status as any,
-          }));
+            const localList: ListItem[] = localAbsenceItems.map((item) => ({
+              eventId: Number(item.id),
+              kind: '결강' as const,
+              date: item.date,
+              time: item.time,
+              class: item.class,
+              teacher: item.teacher,
+              description: item.description,
+              status: item.status as any,
+            }));
 
-          setItems([...mockList, ...localList]);
+            setItems([...mockList, ...localList]);
+          }
+        } catch (e) {
+          console.error(e);
+          setItems([]);
+        } finally {
+          setLoading(false);
         }
-      } catch (e) {
-        console.error(e);
-        setItems([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    load();
-  }, [selection, filter]);
+      };
+      load();
+    }, [selection, filter, refreshing, isAdmin]),
+  );
 
   const filtered = useMemo(() => items.filter((i) => i.status === filter), [items, filter]);
 
@@ -147,6 +154,9 @@ export default function ClassRequestScreen() {
               onPress={() => {
                 router.push('/main');
               }}
+              width={SVG_SIZE}
+              height={SVG_SIZE}
+              style={{ marginLeft: screenWidth * 0.03 }}
             />
           </View>
           <Text style={styles.title} onPress={() => setIsAdmin(!isAdmin)}>
@@ -195,9 +205,21 @@ export default function ClassRequestScreen() {
             keyExtractor={(item, idx) => `${item.kind}-${item.eventId}-${idx}`}
             renderItem={({ item }) =>
               selection === '교환' ? (
-                <ExchangeCard isAdmin={isAdmin} item={item as ExchangeItem} />
+                <ExchangeCard
+                  isAdmin={isAdmin}
+                  item={item as ExchangeItem}
+                  filter={filter}
+                  refreshig={refreshing}
+                  setRefreshing={setRefreshing}
+                />
               ) : (
-                <CancelCard isAdmin={isAdmin} item={item as CancelItem} />
+                <CancelCard
+                  isAdmin={isAdmin}
+                  item={item as CancelItem}
+                  filter={filter}
+                  refreshig={refreshing}
+                  setRefreshing={setRefreshing}
+                />
               )
             }
           />
@@ -246,8 +268,8 @@ const styles = StyleSheet.create({
     color: '#999',
   },
   title: {
-    fontSize: screenWidth * 0.045,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '600',
     marginLeft: screenWidth * 0.13,
   },
   selection: {

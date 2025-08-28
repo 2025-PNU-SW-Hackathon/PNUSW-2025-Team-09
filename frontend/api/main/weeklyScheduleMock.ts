@@ -87,7 +87,7 @@ export const getAllSchedulesMock = async (): Promise<getAllSchedulesResponse> =>
       subject: '수학',
       startTime: '10:30',
       endTime: '12:00',
-      teacherName: '한혜인',
+      teacherName: '김소영',
       isCancelled: false,
     },
     {
@@ -127,7 +127,7 @@ export const getAllSchedulesMock = async (): Promise<getAllSchedulesResponse> =>
       subject: '국어',
       startTime: '10:30',
       endTime: '12:00',
-      teacherName: '이병길',
+      teacherName: '김소영',
       isCancelled: false,
     },
     {
@@ -147,7 +147,7 @@ export const getAllSchedulesMock = async (): Promise<getAllSchedulesResponse> =>
       subject: '국어',
       startTime: '09:00',
       endTime: '10:30',
-      teacherName: '이병길',
+      teacherName: '김소영',
       isCancelled: false,
     },
     {

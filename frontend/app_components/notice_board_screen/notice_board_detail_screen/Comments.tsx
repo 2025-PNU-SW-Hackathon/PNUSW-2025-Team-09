@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { Comment } from './Comment';
 import { Line } from './Line';
-import { Post } from '../storage';
+import { Post } from '@/types/notice_board_screen/post';
 
 interface Comments {
   post?: Post;

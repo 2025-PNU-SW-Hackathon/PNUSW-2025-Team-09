@@ -24,6 +24,8 @@ import { getPaymentMock } from '@/api/main/Payment/paymentMock';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
+const SVG_SIZE = screenWidth * 0.045;
+
 // AsyncStorage에서 가져올 데이터 타입
 type LocalPaymentItem = {
   id: string;
@@ -44,6 +46,7 @@ export default function PaymentRequestScreen() {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState<any[]>([]);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const loadData = async () => {
     setLoading(true);
@@ -79,7 +82,7 @@ export default function PaymentRequestScreen() {
   useFocusEffect(
     React.useCallback(() => {
       loadData();
-    }, [filter]),
+    }, [filter, refreshing, isAdmin]),
   );
 
   const filtered = useMemo(() => items.filter((i) => i.status === filter), [items, filter]);
@@ -89,7 +92,12 @@ export default function PaymentRequestScreen() {
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" backgroundColor="#F0F0F0" />
         <View style={styles.topRow}>
-          <GoBack onPress={() => router.push('/main')} />
+          <GoBack
+            onPress={() => router.push('/main')}
+            width={SVG_SIZE}
+            height={SVG_SIZE}
+            style={{ marginLeft: screenWidth * 0.03 }}
+          />
           <Text style={styles.title} onPress={() => setIsAdmin(!isAdmin)}>
             결제 요청서
           </Text>
@@ -118,7 +126,15 @@ export default function PaymentRequestScreen() {
           <FlatList
             data={filtered}
             keyExtractor={(item, idx) => `${item.eventId}-${idx}`}
-            renderItem={({ item }) => <PaymentCard isAdmin={isAdmin} item={item} />}
+            renderItem={({ item }) => (
+              <PaymentCard
+                isAdmin={isAdmin}
+                item={item}
+                filter={filter}
+                refreshig={refreshing}
+                setRefreshing={setRefreshing}
+              />
+            )}
             showsVerticalScrollIndicator={false}
           />
         )}
@@ -157,8 +173,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: screenWidth * 0.045,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '600',
     marginLeft: screenWidth * 0.13,
   },
   emptyText: {

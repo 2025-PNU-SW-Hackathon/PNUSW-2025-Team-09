@@ -23,11 +23,13 @@ import {
   pickDocument,
   AttachedFile as AttachedFileType,
 } from '@/app_components/notice_board_screen/create/fileUtils';
-import { createPost } from '@/app_components/notice_board_screen/storage';
 import { ClassFilterCard } from '@/app_components/notice_board_screen/filter_card/ClassFilterCard';
 import { DepartmentFilterCard } from '@/app_components/notice_board_screen/filter_card/DepartmentFilterCard';
 import { TypeFilterCard } from '@/app_components/notice_board_screen/filter_card/TypeFilterCard';
 import { useBoardParams } from '@/contexts/BoardParamsContext';
+import publicApi from '@/api/clients/publicApi';
+import { GetPostsResponse } from '@/types/notice_board_screen/getPostsResponse';
+import { useBoardData } from '@/contexts/BoardDataContext';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -58,6 +60,7 @@ export default function NoticeCreateScreen() {
   const [content, setContent] = useState('');
   const [attachedFiles, setAttachedFiles] = useState<AttachedFile[]>([]);
   const { setParams } = useBoardParams();
+  const { setPosts } = useBoardData();
 
   const slideAnim = useRef(new Animated.Value(screenHeight)).current;
 
@@ -102,16 +105,26 @@ export default function NoticeCreateScreen() {
         return;
       }
 
-      await createPost({
-        title,
-        content,
-        selection,
-        filter1,
-        filter2,
-        attachments: attachedFiles,
-        comments: [],
+      await publicApi.post('/notice-board/post', {
+        boardType: selection === '반 별 게시판' ? '반' : '부',
+        classType: filter1,
+        contentType: filter2,
+        authorNickname: 'byunggil',
+        title: title,
+        content: content,
       });
-      // 저장 후 목록으로 이동(현재 탭/필터 유지)
+
+      const response = await publicApi.get<GetPostsResponse>('/notice-board/get', {
+        params: {
+          boardType: selection === '반 별 게시판' ? '반' : '부',
+          classType: filter1,
+          contentType: filter2,
+          limit: 20,
+        },
+      });
+
+      setPosts(response.data.posts);
+
       const tab = selection === '반 별 게시판' ? '반' : '부';
       setParams({ tab, filter1, filter2 });
       router.back();

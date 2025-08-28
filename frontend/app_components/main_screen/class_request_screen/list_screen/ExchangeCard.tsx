@@ -8,15 +8,19 @@ import Class from '@/app_assets/main/class_request/list/class.svg';
 import Human from '@/app_assets/main/class_request/list/human.svg';
 import Desc from '@/app_assets/main/class_request/list/description.svg';
 import { ConfirmActionBar } from '@/app_components/shared/ConfirmActionBar';
+import { FilterType } from './FilterButton';
 
 export type ExchangeCardProps = {
   isAdmin: boolean;
   item: getExchangeResponse & { eventId: number };
+  filter: FilterType;
+  refreshig: boolean;
+  setRefreshing: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const { width: screenWidth } = Dimensions.get('window');
 
-function ExchangeCardBase({ isAdmin, item }: ExchangeCardProps) {
+function ExchangeCardBase({ isAdmin, item, filter, refreshig, setRefreshing }: ExchangeCardProps) {
   const [showActionBar, setShowActionBar] = useState(true);
 
   const handleAccept = async () => {
@@ -34,6 +38,7 @@ function ExchangeCardBase({ isAdmin, item }: ExchangeCardProps) {
 
       await AsyncStorage.setItem('exchangeRequests', JSON.stringify(updatedRequests));
 
+      setRefreshing(!refreshig);
       setShowActionBar(false);
     } catch (error) {
       console.error('상태 업데이트 중 오류:', error);
@@ -55,6 +60,7 @@ function ExchangeCardBase({ isAdmin, item }: ExchangeCardProps) {
 
       await AsyncStorage.setItem('exchangeRequests', JSON.stringify(updatedRequests));
 
+      setRefreshing(!refreshig);
       setShowActionBar(false);
     } catch (error) {
       console.error('상태 업데이트 중 오류:', error);
@@ -108,7 +114,7 @@ function ExchangeCardBase({ isAdmin, item }: ExchangeCardProps) {
         <Text style={styles.desc}>{item.description}</Text>
       </View>
 
-      {showActionBar && (
+      {showActionBar && filter === '대기' && (
         <ConfirmActionBar isAdmin={isAdmin} onAccept={handleAccept} onReject={handleReject} />
       )}
     </View>

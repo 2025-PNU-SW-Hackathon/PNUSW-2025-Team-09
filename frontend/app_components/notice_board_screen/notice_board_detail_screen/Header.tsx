@@ -4,7 +4,7 @@ import { Dimensions, StyleSheet, View } from 'react-native';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
-const SVG_SIZE = screenWidth * 0.1;
+const SVG_SIZE = screenWidth * 0.08;
 
 export const Header = () => {
   return (
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   backIcon: {
     position: 'absolute',
-    left: screenWidth * 0.05,
+    left: screenWidth * 0.07,
   },
   text: {
     fontSize: 24,

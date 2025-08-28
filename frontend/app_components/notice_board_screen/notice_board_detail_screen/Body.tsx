@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { Line } from './Line';
-import { Post } from '../storage';
+import { Post } from '@/types/notice_board_screen/post';
 
 interface Body {
   post?: Post;
@@ -10,9 +10,9 @@ interface Body {
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 export const Body = ({ post }: Body) => {
-  function formatDate(ts?: number) {
+  function formatDate(ts?: number | Date) {
     if (!ts) return;
-    const d = new Date(ts);
+    const d = ts instanceof Date ? ts : new Date(ts);
     const yyyy = d.getFullYear();
     const mm = String(d.getMonth() + 1).padStart(2, '0');
     const dd = String(d.getDate()).padStart(2, '0');
@@ -30,7 +30,7 @@ export const Body = ({ post }: Body) => {
         <View style={styles.author}>
           <View style={styles.circle} />
           <View style={{ marginLeft: screenWidth * 0.02 }}>
-            <Text style={styles.authorText}>김소영 선생님</Text>
+            <Text style={styles.authorText}>{post?.author.nickname}</Text>
           </View>
         </View>
         <Text style={styles.views}>{formatDate(post?.createdAt)} · 조회수 100</Text>

@@ -8,7 +8,7 @@ interface Header {
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
-const SVG_SIZE = screenWidth * 0.1;
+const SVG_SIZE = screenWidth * 0.08;
 
 export const Header = ({ className }: Header) => {
   return (
@@ -23,18 +23,18 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     width: screenWidth,
-    height: screenHeight * 0.1,
+    height: screenHeight * 0.05,
     backgroundColor: '#F0F0F0',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: screenHeight * 0.02,
+    marginTop: screenHeight * 0.065,
   },
   backIcon: {
     position: 'absolute',
-    left: screenWidth * 0.05,
+    left: screenWidth * 0.1,
   },
   text: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: '600',
   },
 });

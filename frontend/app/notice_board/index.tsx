@@ -7,8 +7,6 @@ import {
   TouchableWithoutFeedback,
   Animated,
 } from 'react-native';
-
-import { useLocalSearchParams } from 'expo-router';
 import { Header } from '../../app_components/notice_board_screen/Header';
 import { BoardTabs } from '../../app_components/notice_board_screen/BoardTabs';
 import { NoticeList } from '../../app_components/notice_board_screen/NoticeList';

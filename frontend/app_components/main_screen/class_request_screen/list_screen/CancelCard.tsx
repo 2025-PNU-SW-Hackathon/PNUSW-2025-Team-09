@@ -7,15 +7,19 @@ import Desc from '@/app_assets/main/class_request/list/description.svg';
 import Calendar from '@/app_assets/main/class_request/list/calendar.svg';
 import Class from '@/app_assets/main/class_request/list/class.svg';
 import { ConfirmActionBar } from '@/app_components/shared/ConfirmActionBar';
+import { FilterType } from './FilterButton';
 
 export type CancelCardProps = {
   isAdmin: boolean;
   item: getCancelResponse & { eventId: number };
+  filter: FilterType;
+  refreshig: boolean;
+  setRefreshing: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const { width: screenWidth } = Dimensions.get('window');
 
-function CancelCardBase({ isAdmin, item }: CancelCardProps) {
+function CancelCardBase({ isAdmin, item, filter, refreshig, setRefreshing }: CancelCardProps) {
   const [showActionBar, setShowActionBar] = useState(true);
 
   const handleAccept = async () => {
@@ -33,6 +37,7 @@ function CancelCardBase({ isAdmin, item }: CancelCardProps) {
 
       await AsyncStorage.setItem('absenceRequests', JSON.stringify(updatedRequests));
 
+      setRefreshing(!refreshig);
       setShowActionBar(false);
     } catch (error) {
       console.error('상태 업데이트 중 오류:', error);
@@ -54,6 +59,7 @@ function CancelCardBase({ isAdmin, item }: CancelCardProps) {
 
       await AsyncStorage.setItem('absenceRequests', JSON.stringify(updatedRequests));
 
+      setRefreshing(!refreshig);
       setShowActionBar(false);
     } catch (error) {
       console.error('상태 업데이트 중 오류:', error);
@@ -88,7 +94,7 @@ function CancelCardBase({ isAdmin, item }: CancelCardProps) {
         <Text style={styles.desc}>{item.description}</Text>
       </View>
 
-      {showActionBar && (
+      {showActionBar && filter === '대기' && (
         <ConfirmActionBar isAdmin={isAdmin} onAccept={handleAccept} onReject={handleReject} />
       )}
     </View>

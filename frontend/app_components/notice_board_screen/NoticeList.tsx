@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, TouchableOpacity, Text, View, StyleSheet, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useFocusEffect } from '@react-navigation/native';
-import { getPostsBy, type Post } from '@/app_components/notice_board_screen/storage';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import publicApi from '@/api/clients/publicApi';
+import { Post } from '@/types/notice_board_screen/post';
+import { GetPostsResponse } from '@/types/notice_board_screen/getPostsResponse';
+import { useBoardData } from '@/contexts/BoardDataContext';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -16,42 +17,61 @@ type Props = {
 
 export const NoticeList = ({ selectedTab, filter1, filter2 }: Props) => {
   const router = useRouter();
-  const [items, setItems] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [hasMore, setHasMore] = useState(true);
+  const [cursor, setCursor] = useState<string | null>(null);
+  const { posts, setPosts } = useBoardData();
 
-  const fetchData = useCallback(async () => {
-    setLoading(true);
-    setError(null);
+  useEffect(() => {
+    setPosts([]);
+    fetchData();
+  }, []);
 
-    try {
-      const posts = await AsyncStorage.getItem('@notice_posts_v1'); // AsyncStorage에서 게시글 가져오기
-      console.log('Stored Posts:', JSON.parse(posts || '[]'));
+  const fetchData = useCallback(
+    async (isRefresh = false) => {
+      if (loading) return;
+      setLoading(true);
+      setError(null);
 
-      const list = await getPostsBy(selectedTab, filter1, filter2); // 필터 조건에 맞는 게시글 불러오기
-      setItems(list); // 게시글 목록 업데이트
-    } catch (err) {
-      console.error('Error loading posts:', err);
-      setError('게시글을 불러오는 데 오류가 발생했습니다.');
-    } finally {
-      setLoading(false);
-    }
-  }, [selectedTab, filter1, filter2]);
+      try {
+        const response = await publicApi.get<GetPostsResponse>('/notice-board/get', {
+          params: {
+            boardType: selectedTab,
+            classType: filter1,
+            contentType: filter2,
+            limit: 20,
+            cursor: cursor,
+          },
+        });
+        console.log('data', response.data);
 
-  // 화면에 들어올 때 + 필터 바뀔 때마다 새로 불러오기
-  useFocusEffect(
-    useCallback(() => {
-      fetchData(); // 데이터 새로 고침
-    }, [fetchData]),
+        const { posts, hasMore: nextHasMore } = response.data;
+
+        if (isRefresh) {
+          setPosts(posts);
+        } else {
+          setPosts((prev) => {
+            const ids = new Set(prev.map((p) => p.id));
+            const newOnes = posts.filter((p) => !ids.has(p.id));
+            return [...prev, ...newOnes];
+          });
+        }
+
+        setHasMore(nextHasMore);
+
+        if (posts.length > 0) {
+          setCursor(posts[posts.length - 1].createdAt.toString());
+        }
+      } catch (err) {
+        console.error('Error loading posts:', err);
+        setError('게시글을 불러오는 데 오류가 발생했습니다.');
+      } finally {
+        setLoading(false);
+      }
+    },
+    [cursor, filter1, filter2, loading, selectedTab, setPosts],
   );
-
-  if (loading) {
-    return (
-      <View style={{ alignItems: 'center', paddingTop: screenHeight * 0.1 }}>
-        <Text>로딩 중...</Text>
-      </View>
-    );
-  }
 
   if (error) {
     return (
@@ -61,7 +81,7 @@ export const NoticeList = ({ selectedTab, filter1, filter2 }: Props) => {
     );
   }
 
-  if (!items.length) {
+  if (!posts.length) {
     return (
       <View style={{ alignItems: 'center', paddingTop: screenHeight * 0.1 }}>
         <Text>게시글이 없습니다.</Text>
@@ -84,11 +104,11 @@ export const NoticeList = ({ selectedTab, filter1, filter2 }: Props) => {
 
       <View style={styles.metaRow}>
         <View style={styles.metaLeft}>
-          <Text style={styles.metaChip}>{item.selection === '반 별 게시판' ? '반' : '부'}</Text>
+          <Text style={styles.metaChip}>{item.boardType === '반' ? '반' : '부'}</Text>
           <Text style={styles.metaDot}>·</Text>
-          <Text style={styles.metaText}>{item.filter1}</Text>
+          <Text style={styles.metaText}>{item.classType}</Text>
           <Text style={styles.metaDot}>·</Text>
-          <Text style={styles.metaText}>{item.filter2}</Text>
+          <Text style={styles.metaText}>{item.contentType}</Text>
         </View>
         <View style={styles.metaRight}>
           <Ionicons name="time-outline" size={screenWidth * 0.035} color="#B7B7B7" />
@@ -102,11 +122,18 @@ export const NoticeList = ({ selectedTab, filter1, filter2 }: Props) => {
 
   return (
     <FlatList
-      data={items}
+      data={posts}
       keyExtractor={(item) => item.id}
       renderItem={renderItem}
       contentContainerStyle={{ paddingBottom: screenHeight * 0.2 }}
       showsVerticalScrollIndicator={false}
+      onEndReached={() => {
+        if (hasMore && !loading) {
+          fetchData(false);
+        }
+      }}
+      onEndReachedThreshold={0.1}
+      removeClippedSubviews={false}
     />
   );
 };

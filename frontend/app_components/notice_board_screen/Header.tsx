@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     padding: screenWidth * 0.01,
   },
   title: {
-    fontSize: screenWidth * 0.045,
+    fontSize: 16,
     fontWeight: '600',
     color: '#000',
   },

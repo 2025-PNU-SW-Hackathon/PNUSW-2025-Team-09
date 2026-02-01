@@ -20,11 +20,13 @@ import { ClassFilterCard } from '../../app_components/notice_board_screen/filter
 import { DepartmentFilterCard } from '../../app_components/notice_board_screen/filter_card/DepartmentFilterCard';
 import { TypeFilterCard } from '../../app_components/notice_board_screen/filter_card/TypeFilterCard';
 import { useBoardParams } from '@/contexts/BoardParamsContext';
+import { useBoardData } from '@/contexts/BoardDataContext';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 const NoticeBoardScreen = () => {
   const { params } = useBoardParams();
+  const { setPosts } = useBoardData();
   const [selectedTab, setSelectedTab] = useState<'반' | '부'>(params.tab === '부' ? '부' : '반');
   const [classFilter1, setClassFilter1] = useState(
     params.tab === '반' ? params.filter1?.toString() || '전체' : '전체',
@@ -43,6 +45,10 @@ const NoticeBoardScreen = () => {
   const [showCard, setShowCard] = useState<null | 'class' | 'department' | 'type'>(null);
 
   const slideAnim = useRef(new Animated.Value(screenHeight)).current;
+
+  useEffect(() => {
+    setPosts([]);
+  }, [selectedTab, filter1, filter2]);
 
   useEffect(() => {
     if (showCard) {

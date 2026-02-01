@@ -6,11 +6,13 @@ import { StudentAttendanceInfo } from '@/types/main_screen/class_management_scre
 interface StudentList {
   list: StudentAttendanceInfo[];
   setStudentList: React.Dispatch<React.SetStateAction<StudentAttendanceInfo[]>>;
+  refreshing: boolean;
+  setRefreshing: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const { width: screenWidth } = Dimensions.get('window');
 
-export const StudentList = ({ list, setStudentList }: StudentList) => {
+export const StudentList = ({ list, setStudentList, refreshing, setRefreshing }: StudentList) => {
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -28,7 +30,7 @@ export const StudentList = ({ list, setStudentList }: StudentList) => {
             </TouchableOpacity>
           );
         })}
-        <AddStudentButton list={list} setStudentList={setStudentList} />
+        <AddStudentButton list={list} refreshing={refreshing} setIsRefreshing={setRefreshing} />
       </ScrollView>
     </View>
   );

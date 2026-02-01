@@ -2,15 +2,20 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import WriteButtonSvg from '@/app_assets/notice_board_screen/write_button.svg';
 import { router } from 'expo-router';
+import { useBoardData } from '@/contexts/BoardDataContext';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 export const WriteButton = () => {
+  const { setPosts } = useBoardData();
   return (
     <TouchableOpacity
       style={styles.fab}
       activeOpacity={0.85}
-      onPress={() => router.push('/notice_board/create')}
+      onPress={() => {
+        setPosts([]);
+        router.push('/notice_board/create');
+      }}
     >
       <WriteButtonSvg width={screenWidth * 0.14} height={screenWidth * 0.14} />
     </TouchableOpacity>

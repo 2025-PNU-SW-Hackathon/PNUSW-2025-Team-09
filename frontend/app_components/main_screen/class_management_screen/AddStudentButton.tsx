@@ -6,14 +6,15 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 interface AddStudentButton {
   list: StudentAttendanceInfo[];
-  setStudentList: React.Dispatch<React.SetStateAction<StudentAttendanceInfo[]>>;
+  refreshing: boolean;
+  setIsRefreshing: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 const SVG_SIZE = screenWidth * 0.08;
 
-export const AddStudentButton = ({ list, setStudentList }: AddStudentButton) => {
+export const AddStudentButton = ({ list, refreshing, setIsRefreshing }: AddStudentButton) => {
   const [isClicked, setIsClicked] = useState(false);
   const [text, setText] = useState('');
 
@@ -35,7 +36,7 @@ export const AddStudentButton = ({ list, setStudentList }: AddStudentButton) => 
             placeholder="학생 이름"
             onSubmitEditing={() => {
               list.push({ name: `${text}`, isPresent: false });
-              setStudentList([...list]);
+              setIsRefreshing(!refreshing);
               setIsClicked(false);
               setText('');
             }}

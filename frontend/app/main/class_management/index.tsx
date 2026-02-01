@@ -12,6 +12,7 @@ export default function SettingScreen() {
   const { className } = useLocalSearchParams<{ className: string }>();
   const [currentTab, setCurrentTab] = useState('출석부');
   const [studentList, setStudentList] = useState<StudentAttendanceInfo[]>(mockStudentAttendance);
+  const [refreshing, setRefreshing] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -19,7 +20,12 @@ export default function SettingScreen() {
       <Header className={className} />
       <Tab currentTab={currentTab} setCurrentTab={setCurrentTab} />
       {currentTab === '출석부' && (
-        <StudentList list={studentList} setStudentList={setStudentList} />
+        <StudentList
+          list={studentList}
+          setStudentList={setStudentList}
+          refreshing={refreshing}
+          setRefreshing={setRefreshing}
+        />
       )}
       {currentTab === '수업일지' && <ClassDiaryList />}
     </View>

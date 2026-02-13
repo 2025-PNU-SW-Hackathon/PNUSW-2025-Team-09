@@ -91,7 +91,7 @@
 <table>
   <tr>
     <td>
-      <img width="500" alt="메인페이지" src="https://github.com/user-attachments/assets/770f846b-0a4b-487c-a8d7-f9cf587cd4fa"/>
+      <img width="1000" alt="메인페이지" src="https://github.com/user-attachments/assets/770f846b-0a4b-487c-a8d7-f9cf587cd4fa"/>
     </td>
     <td>
       <img width="900" alt="이번주일정_나의일정" src="https://github.com/user-attachments/assets/ba466caf-ae7b-465f-8434-4aa3a4ff3682"/><br/>

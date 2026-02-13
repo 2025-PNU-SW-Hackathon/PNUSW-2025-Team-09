@@ -93,7 +93,7 @@
     <td>
       <p align="center">
         <img width="200" height="450" alt="메인페이지" src="https://github.com/user-attachments/assets/770f846b-0a4b-487c-a8d7-f9cf587cd4fa"/>
-        <img width="700" alt="이번주일정_나의일정" src="https://github.com/user-attachments/assets/ba466caf-ae7b-465f-8434-4aa3a4ff3682"/>
+        <img width="500" alt="이번주일정_나의일정" src="https://github.com/user-attachments/assets/ba466caf-ae7b-465f-8434-4aa3a4ff3682"/>
       </p>
       * 반별 아이콘과 수업 이름, 시간이 표시되며 요일별로 일정을 확인할 수 있습니다.<br/><br/>
       <table>
